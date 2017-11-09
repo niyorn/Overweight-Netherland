@@ -2,24 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Overweight Netherland</title>
-    <link rel="stylesheet" href="stylesheet/stylesheet.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Overweight Netherland</title>
+  <link rel="stylesheet" href="stylesheet/stylesheet.css">
 </head>
 
 <body>
-    <aside class="container container__side-mene">
+  <aside class="container container__side-menu">
+    <ul class="menu">
+      <li class="menu menuitem">
+        <button type="button" value="overweight">Overweight
+          </button>
+      </li>
+      <li class="menu menuitem">
+        <button type="button" value="normalweight">normalweight
+          </button>
+      </li>
+      <li class="menu menuitem">
+        <button type="button"           value="underweight">underweight
+        </button>
+      </li>
+    </ul>
+  </aside>
 
-    </aside>
+  <main>
+    <svg  class="line-chart"width="1200" height="700">
+    </svg>
+  </main>
 
-    <main>
-        <svg>
-        </svg>
-    </main>
-
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="script/script.js" charset="utf-8"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="script/script.js" charset="utf-8"></script>
 </body>
+
 </html>

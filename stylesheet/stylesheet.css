@@ -1,0 +1,36 @@
+*, *::before, *::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  display: flex;
+}
+
+.container__side-menu{
+  background: grey;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.menu{
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu.menuitem{
+  background: white;
+  padding: 0 15px;
+  margin-top: 10px;
+}
+
+.line-chart{
+  margin: 1.5rem;
+}
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}

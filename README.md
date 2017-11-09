@@ -84,3 +84,47 @@ What we get from this code, is this:
 43: Object { gender: "Vrouwen", year: "1988", underweight: "4.7", … }
 44: Object { gender: "Vrouwen", year: "1989", underweight: "4.1", … }
 ```
+
+We will also add a function that will nest the data so we're able to select the data based on gender.
+
+This is the function
+```javascript
+// For easy acces to the data, we will nest it. So we can select only the "man" data or the  "wome data"
+var nestData = d3.nest()
+     .key(function(d) {
+          return d.gender;
+     })
+     .entries(data).map(function(d) {
+          return {
+               gender: d.key,
+               values: d.values
+          }
+     });
+     console.log(nestData);
+```
+
+That will give us This
+```
+0: Object { gender: "Mannen", values: […] }
+1: Object { gender: "Vrouwen", values: […] }
+```
+So now we are able to select the data based on Gender
+
+# Creating the line graph
+This line graph is created based on the example of d3noob
+that can be found here:
+https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0
+
+## Changes
+The first thing that I changed was
+```javascript
+var x = d3.scaleTime().range([0, width]);
+```
+to
+```javascript
+var x =  d3.scaleBand().rangeRound([40, width]);
+```
+This is because I don't have a date time format in my dataset and the number 40 is added because I want the graph to be a little more to the right
+
+What we get from this code is This
+![alt text](/assets/process-image/line-graph-start.PNG)
