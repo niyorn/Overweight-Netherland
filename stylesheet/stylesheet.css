@@ -2,10 +2,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 body{
   display: flex;
+}
+
+main{
+  background-color: #505966 ;
 }
 
 .container__side-menu{
@@ -13,6 +18,7 @@ body{
   position: sticky;
   top: 0;
   height: 100vh;
+  left: 0;
 }
 
 .menu{
@@ -33,4 +39,60 @@ body{
 .line {
   fill: none;
   stroke-width: 2px;
+  animation: line-animation 10s linear;
+}
+
+.container-line-chart{
+  position: relative;
+  display: flex;
+}
+
+.tooltip{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  padding: 0.4rem;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.tooltip.year{
+  font-size: 30em;
+  position: absolute;
+  left: 200px;
+  top: 0;
+  background-color: transparent;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.dot{
+  fill: black;
+  opacity: 0.1;
+  transition: 0.5s;
+}
+
+.dot:hover{
+  opacity: 1;
+}
+.ax{
+  opacity: 0.5;
+}
+.ax path, .ax line{
+  stroke: white;
+}
+
+.ax text{
+  fill: white;
+}
+
+@keyframes line-animation {
+  from{
+  stroke-dashoffset: 1936;
+  stroke-dasharray: 1905;
+  }
+
+  to{
+  stroke-dashoffset: 0;
+  }
 }

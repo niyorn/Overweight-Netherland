@@ -18,8 +18,9 @@ We will see that data is not formatted
 105: Object { "Lengte en gewicht van personen, ondergewicht en overgewicht; vanaf 1981": "Totaal mannen en vrouwen" }
 ```
 To be able to read this file we need to format the CSV what we have to a readable CSV file.
+So we first of all, we will convert the CSV file to a text file and remove unnecessary text.
 
-So we first of all we will convert the CSV file to a text file and remove unnecessary text.
+*convert csv to text*
 ```javascript
 d3.text('data.csv')
   .mimeType('text/plain;charset=iso88591')
@@ -128,3 +129,69 @@ This is because I don't have a date time format in my dataset and the number 40 
 
 What we get from this code is This
 ![alt text](/assets/process-image/line-graph-start.PNG)
+
+*This is code written by me*
+We got the line, but I want to add dotes on the line where the user can hover it. This dot will than activate a tooltip
+
+First I created a variable dot where I bind the data to it.
+```javascript
+//Bind data
+var dot = gender.selectAll("dot")
+  .data(data);
+```
+Than create the dom element with the dot.inter() Function
+```javascript
+//Enter (this will create dom element that arent there)
+//Enter (this will create dom element that arent there)
+dot.enter()
+  .append('circle')
+  .attr('class', 'dot')
+  .attr('fill', 'red')
+  .attr("r", 5)
+  .attr("cx", function(d) {
+      return x(d.year)
+    })
+  .attr("cy", function(d) {
+      return y(d.overweight)
+    });
+  .on("mouseover", showTooltip)
+  .on("mouseout", removeTooltip);
+```
+
+And the Function for showing and removing the showTooltip
+```javascript
+//function that will render a tooltip
+function showTooltip(d, i) {
+  var gender = d.gender;
+  var data = d.overweight;
+  var date = d.year;
+  // I want the tooltip slight above the dot, thats why
+  //we will add a ofset
+  var offset = 20;
+  //get the x and y
+  var xPosition = d3.select(this).attr("cx");
+  var yPosition = Number(d3.select(this).attr("cy") - offset);
+
+  //show the year in the html
+  var year = d3.select('.container-line-chart')
+  .append('span')
+  .attr('class', 'tooltip year')
+  .text(date)
+
+  //render tooltip
+  var tooltip = d3.select('.container-line-chart')
+    .append('div')
+    .attr('class', "tooltip")
+    .style('left', xPosition + "px")
+    .style('top', yPosition + "px");
+  tooltip.append('span')
+    .text(gender)
+  tooltip.append('span')
+    .text('overgewicht \n' + data + "%");
+}
+
+//remove tooltip
+function removeTooltip() {
+  d3.selectAll('.tooltip').remove();
+}
+```

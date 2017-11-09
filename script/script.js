@@ -88,12 +88,12 @@ function onload(err, text) {
   // Add the X Axis
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .attr('class', 'x-ax')
+    .attr('class', 'ax x-ax')
     .call(d3.axisBottom(x));
 
   // Add the Y Axis
   svg.append("g")
-    .attr('class', 'y-ax')
+    .attr('class', 'ax y-ax')
     .attr('transform', 'translate(40)')
     .call(d3.axisLeft(y));
 
@@ -109,19 +109,63 @@ function onload(err, text) {
     .attr("d", function(d) {
       return valueline(d.values)
     })
-    .attr("stroke", "red");
+    .attr("stroke", "#F50057");
   //To here<----------------------------------------------------------------------
 
+  //created dot on top of line
+  //Bind data
+  var dot = gender.selectAll("dot")
+    .data(data);
 
+  //Enter (this will create dom element that arent there)
+  dot.enter()
+    .append('circle')
+    .attr('class', 'dot')
+    .attr("r", 4)
+    .attr("cx", function(d) {
+      return x(d.year)
+    })
+    .attr("cy", function(d) {
+      return y(d.overweight)
+    })
+    .on("mouseover", showTooltip)
+    .on("mouseout", removeTooltip);
 
-  // // Update
-  // dot.attr("cx", function(d) {
-  //     return x(d.year)
-  //   })
-  //   .attr("cy", function(d) {
-  //     return x(d.overweight)
-  //   });
+  //function that will render a tooltip
+  function showTooltip(d, i) {
+    var gender = d.gender;
+    var data = d.overweight;
+    var date = d.year;
+    // I want the tooltip slight above the dot, thats why
+    //we will add a ofset
+    var offset = 20;
+    //get the x and y
+    var xPosition = d3.select(this).attr("cx");
+    var yPosition = Number(d3.select(this).attr("cy") - offset);
 
+    //show the year in the html
+    var year = d3.select('.container-line-chart')
+    .append('span')
+    .attr('class', 'tooltip year')
+    .text(date)
+
+    //render tooltip
+    var tooltip = d3.select('.container-line-chart')
+      .append('div')
+      .attr('class', "tooltip")
+      .style('left', xPosition + "px")
+      .style('top', yPosition + "px");
+    tooltip.append('span')
+      .text(gender)
+    tooltip.append('span')
+      .text('overgewicht \n' + data + "%");
+  }
+
+  //remove tooltip
+  function removeTooltip() {
+    d3.selectAll('.tooltip').remove();
+  }
+  
   //Update graph when the menu items are clicked
   d3.selectAll('.menuitem button').on("click", function() {
     //Get the value of the button
