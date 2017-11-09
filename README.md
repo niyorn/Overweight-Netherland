@@ -139,7 +139,7 @@ First I created a variable dot where I bind the data to it.
 var dot = gender.selectAll("dot")
   .data(data);
 ```
-Than create the dom element with the dot.inter() Function
+Than create the dom element with the dot.enter() Function
 ```javascript
 //Enter (this will create dom element that arent there)
 //Enter (this will create dom element that arent there)
@@ -195,3 +195,71 @@ function removeTooltip() {
   d3.selectAll('.tooltip').remove();
 }
 ```
+
+this is what we get
+![alt text](/assets/process-image/line-chart-tooltip.gif)
+
+Than I will so add a buttons where we can change the dataSetType. The function below is the code wich determine which dataset we need to showing
+
+```javascript
+//Update graph when the menu items are clicked
+d3.selectAll('.menuitem button').on("click", function() {
+  //Get the value of the button
+  var dataValue = this.value.toString();
+  dataSetType = dataValue;
+  y.domain([0, d3.max(data, function(d) {
+    //It is used here to determine which data to show
+    return d[dataValue];
+  })]);
+
+  /* valueline is created here again, because with
+  the variable dataValue we determine the the y position
+  from the right dataset*/
+  var valueline = d3.line()
+    .curve(d3.curveMonotoneX)
+    .x(function(d) {
+      return x(d.year);
+    })
+    .y(function(d) {
+      return y(d[dataValue]); //determine wich dataset
+    });
+
+  //Select the element which we will apply to change to
+  var svg = d3.select("svg").transition();
+  var gender = g.selectAll(".line").data(nestData);
+
+  gender.exit().remove();
+  gender.enter()
+    .append('g')
+    .attr('class', 'gender');
+
+  // Make the changes
+  svg.selectAll(".line") // change the line
+    .duration(750)
+    .attr("d", function(d) {
+      return valueline(d.values)
+    });
+  svg.select(".y-ax") // change the y axis
+    .duration(750)
+    .call(d3.axisLeft(y));
+
+  var dot = g.selectAll(".dot").data(data)
+
+  dot.exit().remove();
+
+  //Create element if not exist
+  dot.enter()
+    .append('circle')
+    .attr('class', 'dot')
+
+  //update cy position
+  svg.selectAll('.dot')
+  .duration(1000)
+  .attr("cy", function(d) {
+    return y(d[dataValue])
+  })
+});
+```
+
+And this is the result
+![alt text](/assets/process-image/line-chart-update.gif)

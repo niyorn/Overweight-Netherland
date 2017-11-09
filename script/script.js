@@ -47,6 +47,7 @@ function onload(err, text) {
   //This variable is created so we can acces the man or the womans data
   var menData = nestData[0].values;
   var womanData = nestData[1].values;
+  var dataSetType = 'overweight'; // dit wordt gebruikt bij het inladen
 
   //This bar chart is based on the bar chart of d3noob
   //src: https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0
@@ -54,10 +55,10 @@ function onload(err, text) {
   // set the dimensions and margins of the graph
   var svg = d3.select("svg"),
     margin = {
-      top: 20,
+      top: 5,
       right: 20,
       bottom: 30,
-      left: 20
+      left: 30
     },
     width = svg.attr("width") - margin.left - margin.right,
     height = svg.attr("height") - margin.top - margin.bottom,
@@ -105,7 +106,9 @@ function onload(err, text) {
 
   // Add the valueline path.
   gender.append("path")
-    .attr("class", "line")
+    .attr("class", function(d, i) {
+      return 'line ' + d.gender
+    })
     .attr("d", function(d) {
       return valueline(d.values)
     })
@@ -121,7 +124,7 @@ function onload(err, text) {
   dot.enter()
     .append('circle')
     .attr('class', 'dot')
-    .attr("r", 4)
+    .attr("r", 5)
     .attr("cx", function(d) {
       return x(d.year)
     })
@@ -134,20 +137,20 @@ function onload(err, text) {
   //function that will render a tooltip
   function showTooltip(d, i) {
     var gender = d.gender;
-    var data = d.overweight;
+    var data = d[dataSetType];
     var date = d.year;
     // I want the tooltip slight above the dot, thats why
     //we will add a ofset
-    var offset = 20;
+    var offset = -10;
     //get the x and y
     var xPosition = d3.select(this).attr("cx");
     var yPosition = Number(d3.select(this).attr("cy") - offset);
 
     //show the year in the html
     var year = d3.select('.container-line-chart')
-    .append('span')
-    .attr('class', 'tooltip year')
-    .text(date)
+      .append('span')
+      .attr('class', 'tooltip year')
+      .text(date)
 
     //render tooltip
     var tooltip = d3.select('.container-line-chart')
@@ -165,11 +168,12 @@ function onload(err, text) {
   function removeTooltip() {
     d3.selectAll('.tooltip').remove();
   }
-  
+
   //Update graph when the menu items are clicked
   d3.selectAll('.menuitem button').on("click", function() {
     //Get the value of the button
     var dataValue = this.value.toString();
+    dataSetType = dataValue;
     y.domain([0, d3.max(data, function(d) {
       //It is used here to determine which data to show
       return d[dataValue];
@@ -205,6 +209,22 @@ function onload(err, text) {
     svg.select(".y-ax") // change the y axis
       .duration(750)
       .call(d3.axisLeft(y));
+
+    var dot = g.selectAll(".dot").data(data)
+
+    dot.exit().remove();
+
+    //Create element if not exist
+    dot.enter()
+      .append('circle')
+      .attr('class', 'dot')
+
+    //update cy position
+    svg.selectAll('.dot')
+    .duration(1000)
+    .attr("cy", function(d) {
+      return y(d[dataValue])
+    })
   });
 
 }
