@@ -14,7 +14,7 @@
   <aside class="container container__side-menu">
     <ul class="menu">
       <li class="menu menuitem">
-        <button type="button" value="overweight">Overweight
+        <button class="active" type="button" value="overweight">Overweight
           </button>
       </li>
       <li class="menu menuitem">
@@ -33,9 +33,17 @@
       <svg  class="line-chart"width="1900" height="700">
       </svg>
     </div>
+
+    <div class="container-sankey-chart">
+      <img src="assets/sankey.svg" alt="sankey">
+      <p>A real sankey is still working in progress</p>
+      <svg  class="sankey-chart" width="900" height="900">
+      </svg>
+    </div>
   </main>
 
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="script/sankey.js" charset="utf-8"></script>
   <script src="script/script.js" charset="utf-8"></script>
 </body>
 

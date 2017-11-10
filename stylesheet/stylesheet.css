@@ -29,7 +29,7 @@ body{
 
 }
 
-.menuitem.menuitem button{
+.menu.menuitem button{
   background-color: transparent;
   color: white;
   width: 100%;
@@ -39,8 +39,12 @@ body{
   cursor: pointer;
 }
 
-.menuitem.menuitem button:hover{
+.menu.menuitem button:hover{
   background-color: #F4511E;
+}
+
+.menu.menuitem button.active{
+  background-color: #F4511E
 }
 
 .line-chart{
@@ -104,6 +108,23 @@ body{
 
 .ax text{
   fill: white;
+}
+
+.container-sankey-chart{
+  padding-left: 30px;
+}
+
+.container-sankey-chart img{
+  opacity: 0;
+  transition: 1s;
+}
+
+.container-sankey-chart img.active{
+  opacity: 1;
+}
+
+.sankey-chart{
+  width: 90vw;
 }
 
 @keyframes line-animation {

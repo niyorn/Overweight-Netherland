@@ -260,6 +260,9 @@ d3.selectAll('.menuitem button').on("click", function() {
   })
 });
 ```
-
 And this is the result
 ![alt text](/assets/process-image/line-chart-update.gif)
+
+# Sankey
+*The sankey is made based on the sankey of d3 noob*
+*src: https://bl.ocks.org/d3noob/013054e8d7807dff76247b81b0e29030*
