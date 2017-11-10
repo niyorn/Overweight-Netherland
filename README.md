@@ -1,18 +1,11 @@
-# Overweight Rate in the nederlandNetherland
+# Overweight Rate in the Netherland
 ![alt text](/assets/process-image/graph-final.gif)
 *disclaimer: Sankey is still work in progess*
 
 This graph show the overweight rate of the Netherland from 1981 to 2016.
 
 *example of the data*
-Mannen;"Totaal";"1981";"Percentages/gemiddelden";"2.1";"67.7";"30.2"			
-Mannen;"Totaal";"1982";"Percentages/gemiddelden";"2.3";"68.7";"29.0"			
-Mannen;"Totaal";"1983";"Percentages/gemiddelden";"2.6";"67.2";"30.1"			
-Mannen;"Totaal";"1984";"Percentages/gemiddelden";"2.8";"66.3";"30.8"			
-Mannen;"Totaal";"1985";"Percentages/gemiddelden";"2.8";"66.6";"30.7"			
-Mannen;"Totaal";"1986";"Percentages/gemiddelden";"3.2";"66.1";"30.7"			
-
-
+![alt text](/assets/example-data.PNG)
 
 ## Interaction
 - With the left menu you're able to choose which dataset the line graph will render.
@@ -23,10 +16,15 @@ Mannen;"Totaal";"1986";"Percentages/gemiddelden";"3.2";"66.1";"30.7"
 The x-axes show the the year when the data is collected.
 The y-axes the other overweight rate in %;
 
+I choosed to use a line graph because. Because with a line graph you're able to see the changes of a long  periode of time. You're also able to a trend when this occur.
+
 ## Sankey graph
 ![alt text](/assets/process-image/sankey.svg)
 The sankey is a detailed graph of the year when your clicked on a dot.
 It shows how the data is consist off.
+
+I have used a sankey, because with the sankey. I am able to show to flow of the dataset. It's a beautifull way to show how to data consist off.
+
 # Cleaning data
 When we load the csv the usual way
 ```javascript
