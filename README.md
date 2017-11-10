@@ -10,17 +10,17 @@ This graph show the overweight rate of the Netherland from 1981 to 2016.
 - When click on the dot a Sankey diagram will be rendered
 
 ## Line graph
-The x-axes show the the year when the data is collected.
-The y-axes the other overweight rate in %;
+The x-axes shows the the year when the data is collected.
+The y-axes shows the other overweight rate in %;
 
-I choosed to use a line graph because. Because with a line graph you're able to see the changes of a long  periode of time. You're also able to a trend when this occur.
+I choosed to use a line graph because. Because with a line graph you're able to see the changes of a long  periode of time. You're also able to detect a trend when this occur.
 
 ## Sankey graph
 ![alt text](/assets/example-sankey.PNG)
 The sankey is a detailed graph of the year when your clicked on a dot.
 It shows how the data is consist off.
 
-I have used a sankey, because with the sankey. I am able to show to flow of the dataset. It's a beautifull way to show how to data consist off.
+I used a sankey, because with the sankey. I am able to show to flow of the dataset. It's a beautifull way to show how to data consist off.
 
 ## Data
 *example of the data*
@@ -189,7 +189,7 @@ dot.enter()
   .on("mouseout", removeTooltip);
 ```
 
-And the Function for showing and removing the showTooltip
+And the Function for show and removing the showTooltip
 ```javascript
 //function that will render a tooltip
 function showTooltip(d, i) {
@@ -297,3 +297,9 @@ And this is the result
 # Sankey
 *The sankey is made based on the sankey of d3 noob*
 *src: https://bl.ocks.org/d3noob/013054e8d7807dff76247b81b0e29030*
+*more to come*
+
+#To do
+- Add sankey diagram
+- Add a slider for the year
+- Zoom function on the line graph for detailed information
