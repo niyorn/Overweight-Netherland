@@ -110,6 +110,38 @@ body{
   fill: white;
 }
 
+.legenda{
+    position: fixed;
+}
+
+.line-chart.legenda{
+    left: 90vw;
+}
+
+.line-chart.legenda div{
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    margin-right: 0.5rem;
+}
+
+.line-chart.legenda ul li{
+    display: flex;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.line-chart.legenda ul li span{
+    line-height: 3;
+}
+
+.line-chart.legenda .legenda-color-men{
+    background-color: #1976D2;
+}
+
+.line-chart.legenda .legenda-color-women{
+    background-color: #EC407A;
+}
 .container-sankey-chart{
   padding-left: 30px;
 }
@@ -125,6 +157,18 @@ body{
 
 .sankey-chart{
   width: 90vw;
+}
+
+.source{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    color: white;
+}
+
+.source a{
+    color: white;
+    opacity: 0.6;
 }
 
 @keyframes line-animation {
