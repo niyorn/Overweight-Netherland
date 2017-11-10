@@ -4,9 +4,6 @@
 
 This graph show the overweight rate of the Netherland from 1981 to 2016.
 
-*example of the data*
-![alt text](/assets/example-data.PNG)
-
 ## Interaction
 - With the left menu you're able to choose which dataset the line graph will render.
 - On the line graph there are dots, if you hover above the dot a tooltip will be displayed which detailed information;
@@ -19,11 +16,21 @@ The y-axes the other overweight rate in %;
 I choosed to use a line graph because. Because with a line graph you're able to see the changes of a long  periode of time. You're also able to a trend when this occur.
 
 ## Sankey graph
-![alt text](/assets/process-image/sankey.svg)
+![alt text](/assets/example-sankey.PNG)
 The sankey is a detailed graph of the year when your clicked on a dot.
 It shows how the data is consist off.
 
 I have used a sankey, because with the sankey. I am able to show to flow of the dataset. It's a beautifull way to show how to data consist off.
+
+## Data
+*example of the data*
+![alt text](/assets/example-data.PNG)
+
+This data is from the [Here](http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=81565ned&D1=a&D2=a&D3=a&D4=0&D5=0-35&HDR=T&STB=G1,G2,G3,G4&VW=T)
+
+The organization that collect the data is 'Centraal Bureau voor de Statistieken'. This organization is from the Dutch goverment and they do allot of collecting data. That's why the data that we have is reliable.  The data is also Relevant, because its publised in the 2016, just a year ago.
+
+What does the data tell us? From the graph we can see that the overweight  rate is growing at an alarming rate. I think we need to take measuremend against the overweight rate.
 
 # Cleaning data
 When we load the csv the usual way
