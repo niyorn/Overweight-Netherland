@@ -299,7 +299,7 @@ And this is the result
 *src: https://bl.ocks.org/d3noob/013054e8d7807dff76247b81b0e29030*
 *more to come*
 
-#To do
+# To do
 - Add sankey diagram
 - Add a slider for the year
 - Zoom function on the line graph for detailed information
