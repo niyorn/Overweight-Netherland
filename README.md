@@ -1,11 +1,8 @@
 # Overweight Rate in the Netherland
 ![alt text](/assets/process-image/graph-final.gif)
-*disclaimer: Sankey is still work in progess*
+![alt text](/assets/process-image/sankey-finish.gif)
 
 This graph show the overweight rate of the Netherland from 1981 to 2016.
-
-![alt text](/assets/process-image/sankey-finish.gif)
-*disclaimer: Sankey is still work in progess*
 
 ## Interaction
 - With the left menu you're able to choose which dataset the line graph will render.
