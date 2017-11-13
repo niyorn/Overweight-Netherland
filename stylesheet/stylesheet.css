@@ -79,6 +79,15 @@ body{
   border-radius: 5px;
 }
 
+.tooltipActive{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  padding: 0.4rem;
+  background-color: white;
+  border-radius: 5px;
+}
+
 .tooltip.year{
   font-size: 30em;
   position: absolute;
@@ -87,6 +96,19 @@ body{
   background-color: transparent;
   opacity: 0.2;
   pointer-events: none;
+}
+
+.tooltipActive.year{
+  font-size: 30em;
+  position: absolute;
+  left: 200px;
+  top: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.tooltipActive.year.inactive{;
+  opacity: 0;
 }
 
 .dot{
@@ -154,11 +176,6 @@ body{
 .container-sankey-chart img.active{
   opacity: 1;
 }
-
-.sankey-chart{
-  width: 90vw;
-}
-
 .source{
     position: fixed;
     right: 10px;
@@ -169,6 +186,27 @@ body{
 .source a{
     color: white;
     opacity: 0.6;
+}
+
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+.node text {
+  pointer-events: none;
+ fill: white;
+}
+
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .15;
+}
+
+.link:hover {
+  stroke-opacity: .8;
 }
 
 @keyframes line-animation {

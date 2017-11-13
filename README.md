@@ -4,10 +4,15 @@
 
 This graph show the overweight rate of the Netherland from 1981 to 2016.
 
+![alt text](/assets/process-image/sankey-finish.gif)
+*disclaimer: Sankey is still work in progess*
+
 ## Interaction
 - With the left menu you're able to choose which dataset the line graph will render.
 - On the line graph there are dots, if you hover above the dot a tooltip will be displayed which detailed information;
 - When click on the dot a Sankey diagram will be rendered
+-  With the sankey diagram you can move the rectacle up and down
+-  On the sankey diagram when you hover over a line a tooltip will be displayed
 
 ## Line graph
 The x-axes shows the the year when the data is collected.
@@ -297,9 +302,134 @@ And this is the result
 # Sankey
 *The sankey is made based on the sankey of d3 noob*
 *src: https://bl.ocks.org/d3noob/013054e8d7807dff76247b81b0e29030*
-*more to come*
+
+When copied from d3noob we will get this graph
+![alt text](/assets/process-image/sankey-finish.PNG)
+
+The first thing I did was adding a if/else statement to deterime which data we need to fetch
+```javascript
+/////////////////////////////////////////////////////////
+//RENDER SANKEY FUNCTION
+///////////////////////////////////////////////////
+////////////////////////////////////////////////////
+function renderSankey(d) {
+     var gender = d.gender;
+     var year = d.year;
+
+     if (gender == 'Mannen') {
+          d3.text('data-mannen.csv')
+               .mimeType('text/plain;charset=iso88591')
+               .get(onload);
+     } else if (gender == 'Vrouwen') {
+          d3.text('data-vrouwen.csv')
+               .mimeType('text/plain;charset=iso88591')
+               .get(onload);
+     }
+ }
+```
+To create the sankey we need to format the data in a certain way.
+```
+{
+"nodes":[
+{"node":0,"name":"node0"},
+{"node":1,"name":"node1"},
+{"node":2,"name":"node2"},
+{"node":3,"name":"node3"},
+{"node":4,"name":"node4"}
+],
+"links":[
+{"source":0,"target":2,"value":2},
+{"source":1,"target":2,"value":2},
+{"source":1,"target":3,"value":2},
+{"source":0,"target":4,"value":2},
+{"source":2,"target":3,"value":2},
+{"source":2,"target":4,"value":2},
+{"source":3,"target":4,"value":4}
+]}
+```
+This is how they want their data presented
+
+The code below is how i did it to format the data
+```javascript
+//create sankey data
+var sankeyData = {};
+nestData.forEach(function(d, i) {
+     if (d.year == year) {
+          //In nodes there will be all the name in it, but because overweight etc are value, we will insert the name nodes before hand
+          var nodes = [{
+               name: 'Underweight'
+          }, {
+               name: 'Normalweight'
+          }, {
+               name: 'Overweight'
+          }];
+          var links = [];
+
+          //Get all the nodes
+          d.values.forEach(function(d, i) {
+               var name = {};
+               name.name = d.age;
+               nodes.push(name);
+          })
+
+          //Get Links overweight
+          d.values.forEach(function(d, i) {
+               var target = {};
+               target.source = d.age;
+               target.target = 'Underweight';
+               target.value = d.underweight;
+
+               links.push(target)
+          })
+
+          //Get links normalweight
+          d.values.forEach(function(d, i) {
+               var target = {};
+               target.source = d.age;
+               target.target = 'Normalweight';
+               target.value = d.normalweight;
+
+               links.push(target)
+          })
+
+          //Get links Overweight
+          d.values.forEach(function(d, i) {
+               var target = {};
+               target.source = d.age;
+               target.target = 'Overweight';
+               target.value = d.overweight;
+
+               links.push(target)
+          })
+
+          sankeyData.nodes = nodes;
+          sankeyData.links = links;
+     }
+})
+```
+But there is a problem. With the code I created their is no number used to determine what the source and the target is. Instead I have used names for that. To get it to work and instead of using number I have the to code from stackoverflow
+https://stackoverflow.com/questions/14629853/json-representation-for-d3-force-directed-networks
+
+The code below will covert the name to numbers
+```javascript
+//this code come from here https://stackoverflow.com/questions/14629853/json-representation-for-d3-force-directed-networks
+var nodeMap = {};
+sankeyData.nodes.forEach(function(x) {
+     nodeMap[x.name] = x;
+});
+sankeyData.links = sankeyData.links.map(function(x) {
+     return {
+          source: nodeMap[x.source],
+          target: nodeMap[x.target],
+          value: x.value
+     };
+});
+```
+
+What we get from all this is This
+![alt text](/assets/process-image/sankey-finish.gif)
+*disclaimer: Sankey is still work in progess*
 
 # To do
-- Add sankey diagram
 - Add a slider for the year
 - Zoom function on the line graph for detailed information
