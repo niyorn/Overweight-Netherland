@@ -6,14 +6,14 @@ This graph show the overweight rate of the Netherland from 1981 to 2016.
 
 ## Interaction
 - With the left menu you're able to choose which dataset the line graph will render.
-- On the line graph there are dots, if you hover above the dot a tooltip will be displayed which detailed information;
+- On the line graph there are dots, if you hover above the dot a tooltip will be displayed with detailed information.
 - When click on the dot a Sankey diagram will be rendered
--  With the sankey diagram you can move the rectacle up and down
+-  With the sankey diagram you can move the rectange up and down
 -  On the sankey diagram when you hover over a line a tooltip will be displayed
 
 ## Line graph
 The x-axes shows the the year when the data is collected.
-The y-axes shows the other overweight rate in %;
+The y-axes shows the  overweight rate in %;
 
 I choosed to use a line graph because. Because with a line graph you're able to see the changes of a long  periode of time. You're also able to detect a trend when this occur.
 
@@ -22,15 +22,15 @@ I choosed to use a line graph because. Because with a line graph you're able to 
 The sankey is a detailed graph of the year when your clicked on a dot.
 It shows how the data is consist off.
 
-I used a sankey, because with the sankey. I am able to show to flow of the dataset. It's a beautifull way to show how to data consist off.
+I used a sankey, because with the sankey. I am able to show to flow of the dataset. It's a beautifull way to show how the data consist off.
 
 ## Data
 *example of the data*
 ![alt text](/assets/example-data.PNG)
 
-This data is from the [Here](http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=81565ned&D1=a&D2=a&D3=a&D4=0&D5=0-35&HDR=T&STB=G1,G2,G3,G4&VW=T)
+This data is from [Here](http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=81565ned&D1=a&D2=a&D3=a&D4=0&D5=0-35&HDR=T&STB=G1,G2,G3,G4&VW=T)
 
-The organization that collect the data is 'Centraal Bureau voor de Statistieken'. This organization is from the Dutch goverment and they do allot of collecting data. That's why the data that we have is reliable.  The data is also Relevant, because its publised in the 2016, just a year ago.
+The organization that collect the data is 'Centraal Bureau voor de Statistieken'. This organization is from the Dutch goverment and they do alot of collecting data. That's why the data that we have is reliable.  The data is also relevant, because its publised in the 2016, just a year ago.
 
 What does the data tell us? From the graph we can see that the overweight  rate is growing at an alarming rate. I think we need to take measuremend against the overweight rate.
 
@@ -76,7 +76,7 @@ function onload(err, text) {
   }
 ```
 
-And than add a function dat map the data. This data contains only the things that we wants
+And than add a function that'll map the data. This data contains only the things that we wants
 ```javascript
 //Add function that remap the data so we have an array of data that we can use
 function map(d) {
@@ -164,7 +164,7 @@ What we get from this code is This
 ![alt text](/assets/process-image/line-graph-start.PNG)
 
 *This is code written by me*
-We got the line, but I want to add dotes on the line where the user can hover it. This dot will than activate a tooltip
+We got the line, but I want to add dotes on the line where the user can hover over it. This dot will than activate a tooltip
 
 First I created a variable dot where I bind the data to it.
 ```javascript
@@ -232,7 +232,7 @@ function removeTooltip() {
 this is what we get
 ![alt text](/assets/process-image/line-chart-tooltip.gif)
 
-Than I will so add a buttons where we can change the dataSetType. The function below is the code wich determine which dataset we need to showing
+Than I will so add a buttons where we can change the dataSetType. The function below is the code wich determine which dataset we need to show
 
 ```javascript
 //Update graph when the menu items are clicked
@@ -301,9 +301,9 @@ And this is the result
 *src: https://bl.ocks.org/d3noob/013054e8d7807dff76247b81b0e29030*
 
 When copied from d3noob we will get this graph
-![alt text](/assets/process-image/sankey-finish.PNG)
+![alt text](/assets/process-image/sankey-d3-noob.PNG)
 
-The first thing I did was adding a if/else statement to deterime which data we need to fetch
+The first thing I did was adding a if/else statement to determine which data we need to fetch
 ```javascript
 /////////////////////////////////////////////////////////
 //RENDER SANKEY FUNCTION
@@ -404,7 +404,7 @@ nestData.forEach(function(d, i) {
      }
 })
 ```
-But there is a problem. With the code I created their is no number used to determine what the source and the target is. Instead I have used names for that. To get it to work and instead of using number I have the to code from stackoverflow
+But there is a problem. With the code I created, there is no number used to determine what the source and the target is. Instead I have used names for that. To get it to work and instead of using number I copied the  code from stackoverflow
 https://stackoverflow.com/questions/14629853/json-representation-for-d3-force-directed-networks
 
 The code below will covert the name to numbers
@@ -425,7 +425,6 @@ sankeyData.links = sankeyData.links.map(function(x) {
 
 What we get from all this is This
 ![alt text](/assets/process-image/sankey-finish.gif)
-*disclaimer: Sankey is still work in progess*
 
 # To do
 - Add a slider for the year
