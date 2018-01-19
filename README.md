@@ -4,12 +4,14 @@
 
 This graph show the overweight rate of the Netherland from 1981 to 2016.
 
+**The line graph** shows the average percentage or all age group combined. If a data point is clicked, a sankey diagram will be shown. The **sankey diagram** shows the ages that are part of that average. The line thickness of the sankey diagram indicates which age group has the most influence on the average.
+
 ## Interaction
 - With the left menu you're able to choose which dataset the line graph will render.
 - On the line graph there are dots, if you hover above the dot a tooltip will be displayed with detailed information.
 - When click on the dot a Sankey diagram will be rendered
 -  With the sankey diagram you can move the rectange up and down
--  On the sankey diagram when you hover over a line a tooltip will be displayed
+-  On the sankey diagram when you hover over a line, a tooltip will be displayed
 
 ## Line graph
 The x-axes shows the the year when the data is collected.
@@ -19,10 +21,9 @@ I choosed to use a line graph because. Because with a line graph you're able to 
 
 ## Sankey graph
 ![alt text](/assets/example-sankey.PNG)
-The sankey is a detailed graph of the year when your clicked on a dot.
-It shows how the data is consist off.
+The sankey diagram shows the age groups that make up the line graph point. The line thickness indicates how much influences an age group has on the average %.
 
-I used a sankey, because with the sankey. I am able to show to flow of the dataset. It's a beautifull way to show how the data consist off.
+I used a sankey diagram, because with a sankey diagram you can immediately see which age group has the biggest influence on the average. You can also quickly see which age group has the biggest chance of being overweight. 
 
 ## Data
 *example of the data*

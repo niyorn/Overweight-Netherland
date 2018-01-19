@@ -209,6 +209,44 @@ body{
   stroke-opacity: .8;
 }
 
+.instruction-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.instruction-info{
+  width: 40rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 3px;
+  position: relative;
+}
+
+.instruction-info h1{
+  font-size: 2.1rem;
+  color: #EC407A;
+  margin-bottom: 1rem;
+}
+
+.instruction-info p:first-of-type{
+  margin-bottom: 0.5rem;
+}
+
+.instruction-info .close-info{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 20px;
+  cursor: pointer;
+}
+
+
 @keyframes line-animation {
   from{
   stroke-dashoffset: 1936;

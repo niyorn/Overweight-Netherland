@@ -531,3 +531,9 @@ function onload(err, text) {
           }
      }
 }
+
+
+d3.select('.instruction-info')
+.on('click', function(){
+    d3.select(".instruction-container").remove();
+});
